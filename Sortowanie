@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+  int tab[10000],pom ,x=0;
+  double start,koniec;
+  srand(time(NULL));
+  
+  for (int i=0;i<10000;i++)
+  {									//Losowanie 10000 elementow.
+    tab[i] = (rand()%90000);
+  }
+  
+  
+  start=clock();
+  
+  for(int i=10000 ; i>1/*&& x==0*/ ;i--)
+  {//x=1;
+  	for(int j=1;j<i;j++)
+	 {
+	  if(tab[j-1]>tab[j])				//W komentarzach sa dane do sortowania z wartownikiem
+	  	{pom=tab[j-1];
+	  	 tab[j-1]=tab[j];
+	  	 tab[j]=pom;
+	  	 //x=0;
+	  	}
+	 } 		
+  }
+  
+  koniec=clock();
+  
+  printf("Program dzialal %lg sekund\n",(koniec - start) / 1000.0);
+ /* for (int i=0;i<10000;i++)
+  {								
+    printf("tablica o nr.%i = %i\n",i,tab[i]);          //Wypisanie tablicy
+  }
+  */
+  return 0;
+}
